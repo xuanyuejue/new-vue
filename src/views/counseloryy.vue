@@ -52,7 +52,7 @@ export default {
     },
     goQuestion (k) {
       this.$router.push({
-        path: '/questionyy/'+ k
+        path: '/question/'+ k
         })
     }
   },

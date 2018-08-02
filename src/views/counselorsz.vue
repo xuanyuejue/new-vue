@@ -42,6 +42,7 @@ export default {
       })
     },
     fetchcon () {
+      console.log('index openId sz', this.openId)
       this.getCounselor().then((res) => {
         console.log('res', res)
         this.fetchlist()
@@ -52,13 +53,14 @@ export default {
     },
     goQuestion (k) {
       this.$router.push({
-        path: '/questionsz/'+ k
+        path: '/question/'+ k
         })
     }
   },
   computed: {
     ...mapGetters({
-      counselorList: 'user/counselorList'
+      counselorList: 'user/counselorList',
+      openId: 'user/openId'
     })
   }
 }

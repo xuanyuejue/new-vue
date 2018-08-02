@@ -31,7 +31,7 @@ axios.interceptors.request.use((req) => {
 })
 
 axios.interceptors.response.use((response) => {
-  console.log('response', response)
+  // console.log('response', response)
   let res = response.data
   // console.log(res.code, res.msg)
   if (res && res.code === 401) {

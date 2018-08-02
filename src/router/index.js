@@ -20,19 +20,14 @@ export default new Router({
       component: () => import('@/views/counseloryy')
     },
     {
-      path: '/questionyy/:uid',
-      name: 'questionyy',
-      component: () => import('@/views/questionyy')
+      path: '/question/:uid',
+      name: 'question',
+      component: () => import('@/views/question')
     },
     {
       path: '/counselorsz',
       name: 'counselorsz',
       component: () => import('@/views/counselorsz')
-    },
-    {
-      path: '/questionsz/:uid',
-      name: 'questionsz',
-      component: () => import('@/views/questionsz')
     },
     {
       path: '/end',

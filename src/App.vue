@@ -8,26 +8,38 @@
 import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'App',
+  created () {
+    // this.loadLocalOpenId().then(() => {
+    //   // console.log('index openId t1', this.openId)
+    // }, () => {
+    //   console.log('failed')
+    // })
+  },
+  beforeMount() {
+  },
   mounted () {
     this.loadLocalOpenId().then(() => {
-      console.log('index openId', this.openId)
-      this.checkSubmit(this.openId).then((res) => {
-        console.log('index res', res)
+      // console.log('index openId t1', this.openId)
+      // this.checkSubmit(this.openId).then((res) => {
+        // console.log('index res', res)
         // this.$router.push('/end')
-      })
+      // })
     }, () => {
-      console.log('createCard failed')
+      console.log('failed')
     })
+    // this.$nextTick(() => {
+    //   console.log('index openId app', this.openId)
+    // })
   },
   methods: {
     ...mapActions({
       loadLocalOpenId: 'user/LOAD_LOCAL_OPENID',
-      checkSubmit: 'user/CHECK_SUBMIT'
+      // checkSubmit: 'user/CHECK_SUBMIT'
     })
   },
   computed: {
     ...mapGetters({
-      openId: 'user/openId'
+      // openId: 'user/openId'
     })
   }
 }

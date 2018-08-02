@@ -106,7 +106,7 @@ export default {
     submitcase () {
       let pd = {}
       this.listArr.map((value, index) => {
-        pd[i] = value.listId
+        pd[index+1] = value.listId
       })
       for (let k in pd) {
         if (!pd[k]) {
@@ -119,7 +119,7 @@ export default {
     confirmdata () {
       let pd = {}
       this.listArr.map((value, index) => {
-        pd[i] = value.listId
+        pd[index+1] = value.listId
       })
       if (!this.subname || !this.submoblie) {
         this.confirmbtn = true
@@ -141,8 +141,12 @@ export default {
         mobile: this.submoblie,
         uid: this.getUid,
         openid: this.openId
+        // name: '52',
+        // mobile: '13212341234',
+        // uid: this.getUid,
+        // openid: 'o38Gns49iF-oyNchoZhMPb_o3zT4'
       }
-      // console.log('data',pd)
+      console.log('data',pd)
       console.log('data',postdata)
       this.postdataaction(postdata).then((res)=>{
         console.log('postadata res', res)

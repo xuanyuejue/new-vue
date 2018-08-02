@@ -17,12 +17,16 @@ export default {
     }
   },
   mounted () {
+    this.$nextTick(() => {
+      console.log('index openId 1', this.openId)
+    })
+    console.log('index openId 2', this.openId)
     // this.loadLocalOpenId().then(() => {
     //   console.log('index openId', this.openId)
-    //   this.checkSubmit(this.openId).then((res) => {
-    //     console.log('index res', res)
-    //     this.$router.push('/end')
-    //   })
+    // this.checkSubmit(this.openId).then((res) => {
+    //   console.log('index res', res)
+    //   this.$router.push('/end')
+    // })
     // }, () => {
     //   console.log('createCard failed')
     // })
@@ -30,7 +34,7 @@ export default {
   methods: {
     ...mapActions({
       // loadLocalOpenId: 'user/LOAD_LOCAL_OPENID',
-      // checkSubmit: 'user/CHECK_SUBMIT'
+      checkSubmit: 'user/CHECK_SUBMIT'
     }),
     btnclick (t) {
       if (t == 1) {
@@ -44,7 +48,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      // openId: 'user/openId'
+      openId: 'user/openId'
     })
   }
 }

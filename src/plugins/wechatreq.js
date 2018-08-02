@@ -10,7 +10,7 @@ function registerwechat (currentPath) {
     'onMenuShareAppMessage' // 获取“分享给朋友”按钮点击状态及自定义分享内容接口
   ]
 
-  axios.post('/getSignPackageUrl', {
+  axios.post('/getSignPackage', {
     url: window.location.href.split('#')[0]
   }).then((response) => {
     // console.log(response)
@@ -25,10 +25,10 @@ function registerwechat (currentPath) {
       jsApiList: jsApiList
     })
     wxSetShare({
-      title: '',
-      desc: '',
+      title: '蓝光地产',
+      desc: '蓝光地产问卷调查活动',
       link: 'https://www.unclepang.com/blue/dist/',
-      imgUrl: 'https://www.unclepang.com/blue/dist/logo.jpg'
+      imgUrl: 'https://www.unclepang.com/blue/dist/logo.png'
     })
   }).catch((error) => {
     console.log(error)
@@ -81,7 +81,7 @@ const wxSetShare = (params) => {
 
 export default {
   // 注册页面
-  // registerwechat,
+  registerwechat,
   // 获取openid
   getopenid (cb) {
     let currentPath = window.location.href.split('#')[0]
@@ -118,8 +118,9 @@ export default {
         // console.warn('getWechatInfo response',response)
         let res = response['data']
         if (cb) {
-          // console.warn('getWechatInfo res',res)
+          console.log('getWechatInfo res',res)
           cb(res['data'])
+          // console.log('getWechatInfo cd',cb)
         }
         // registerwechat(currentPath)
       }).catch((error) => {
@@ -128,5 +129,5 @@ export default {
       // console.log('finish send post req')
     }
   },
-  // wxSetShare
+  wxSetShare
 }

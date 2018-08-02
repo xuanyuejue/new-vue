@@ -66,14 +66,15 @@ const actions = {
     let openId = cache.fetch('openId', 'LGDC')
     if (openId) {
       context.commit(user.SET_OPENID, openId)
-      // context.commit(user.SET_WXSHARE)
+      context.commit(user.SET_WXSHARE)
       cb && cb()
     } else {
       wechatreq.getopenid((res) => {
         console.log('getopenid res', res)
-        cache.store('openId', 'LGDC', JSON.stringify(res).replace(/\"/g, ''))
         context.commit(user.SET_OPENID, res)
-        // context.commit(user.SET_WXSHARE)
+        cache.store('openId', 'LGDC', JSON.stringify(res).replace(/\"/g, ''))
+        // context.commit(user.SET_OPENID, res)
+        context.commit(user.SET_WXSHARE)
         cb && cb()
       })
     }
@@ -94,7 +95,7 @@ const actions = {
 
 const getters = {
   openId (state) {
-    return state.openId
+    return state.openId ? state.openId : cache.fetch('openId', 'LGDC')
   },
   questionList (state) {
     return state.questionList
