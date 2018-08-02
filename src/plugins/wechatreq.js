@@ -118,9 +118,8 @@ export default {
         // console.warn('getWechatInfo response',response)
         let res = response['data']
         if (cb) {
-          console.log('getWechatInfo res',res)
+          // console.log('getWechatInfo res',res)
           cb(res['data'])
-          // console.log('getWechatInfo cd',cb)
         }
         // registerwechat(currentPath)
       }).catch((error) => {

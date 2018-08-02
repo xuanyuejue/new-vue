@@ -64,16 +64,16 @@ const actions = {
   },
   [user.LOAD_LOCAL_OPENID] (context, cb) {
     let openId = cache.fetch('openId', 'LGDC')
+    // console.log(openId)
     if (openId) {
       context.commit(user.SET_OPENID, openId)
       context.commit(user.SET_WXSHARE)
       cb && cb()
     } else {
       wechatreq.getopenid((res) => {
-        console.log('getopenid res', res)
-        context.commit(user.SET_OPENID, res)
+        // console.log('getopenid res', res)
         cache.store('openId', 'LGDC', JSON.stringify(res).replace(/\"/g, ''))
-        // context.commit(user.SET_OPENID, res)
+        context.commit(user.SET_OPENID, res)
         context.commit(user.SET_WXSHARE)
         cb && cb()
       })
@@ -81,9 +81,10 @@ const actions = {
   },
   [user.CHECK_SUBMIT] (context, postData) {
     return new Promise(function (resolve, reject) {
-     console.log('postData', postData)
+    //  console.log('checkSubmit postData', postData)
       axios.post('/checkSubmit', postData).then(function (response) {
         var res = response.data
+        // console.log('checkSubmit res', res)
         resolve(res)
       }, function (response) {
         reject(new Error())
@@ -95,7 +96,8 @@ const actions = {
 
 const getters = {
   openId (state) {
-    return state.openId ? state.openId : cache.fetch('openId', 'LGDC')
+    // console.log('state', state)
+    return state.openId
   },
   questionList (state) {
     return state.questionList

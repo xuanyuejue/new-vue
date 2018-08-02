@@ -17,25 +17,28 @@ export default {
     }
   },
   mounted () {
-    this.$nextTick(() => {
-      console.log('index openId 1', this.openId)
+    this.loadLocalOpenId().then((r) => {
+      // console.log('index openId', that.openId, r)
+    }, () => {
+      console.log('createCard failed')
     })
-    console.log('index openId 2', this.openId)
-    // this.loadLocalOpenId().then(() => {
-    //   console.log('index openId', this.openId)
-    // this.checkSubmit(this.openId).then((res) => {
-    //   console.log('index res', res)
-    //   this.$router.push('/end')
-    // })
-    // }, () => {
-    //   console.log('createCard failed')
-    // })
   },
   methods: {
     ...mapActions({
-      // loadLocalOpenId: 'user/LOAD_LOCAL_OPENID',
+      loadLocalOpenId: 'user/LOAD_LOCAL_OPENID',
       checkSubmit: 'user/CHECK_SUBMIT'
     }),
+    check (i) {
+      let pd = {
+        openid: i
+      }
+      this.checkSubmit(pd).then((res) => {
+        // console.log('index res', res)
+        if (res.code == 402 ){
+          this.$router.push('/end')
+        }
+      })
+    },
     btnclick (t) {
       if (t == 1) {
         //嵊州
@@ -50,11 +53,16 @@ export default {
     ...mapGetters({
       openId: 'user/openId'
     })
+  },
+  watch: {
+    openId: function (newval,oldval) {
+        // console.log('index openId wt', this.openId, newval)
+        this.check(this.openId)
+    }
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .pages{
   width: 100%;
