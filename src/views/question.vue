@@ -122,7 +122,14 @@ export default {
         pd[index+1] = value.listId
       })
       if (!this.subname || !this.submoblie) {
+        // this.confirmbtn = true
+        this.msg = '请填写姓名和电话'
+        this.confirma = true
         this.confirmbtn = true
+        setTimeout(()=>{
+          this.confirma = false
+          this.confirmbtn = false
+        },1000)
         return
       }
       if (!/^[1][3,4,5,6,7,8,9][0-9]{9}$/.test(this.submoblie)) {

@@ -22,7 +22,7 @@ html,body{
   /* text-align: center; */
   color: #2c3e50;
   font-size: 0;
-  position: relative;
+  /* position: relative; */
   /* margin-top: 60px; */
 }
 </style>

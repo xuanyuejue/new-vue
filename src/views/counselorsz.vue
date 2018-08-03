@@ -75,6 +75,7 @@ export default {
   color: #fff;
   background: url('../../static/images/sz.jpg') no-repeat;
   background-size: cover;
+  position: relative;
 }
 ul,li {
   list-style: none;

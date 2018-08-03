@@ -28,7 +28,7 @@ function registerwechat (currentPath) {
       title: '蓝光地产',
       desc: '蓝光地产问卷调查活动',
       link: 'https://www.unclepang.com/blue/dist/',
-      imgUrl: 'https://www.unclepang.com/blue/dist/logo.png'
+      imgUrl: 'https://www.unclepang.com/blue/dist/logo.jpg'
     })
   }).catch((error) => {
     console.log(error)
